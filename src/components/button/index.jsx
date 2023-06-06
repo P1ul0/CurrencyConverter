@@ -1,11 +1,15 @@
 import { Button, DivButton } from "./style"
+import { useNavigate } from "react-router"
+export const ButtonRgb = ({Text, Rota}) => {
+    const navigate = useNavigate();
 
+    const hadleHome = () => {
+        navigate(Rota)
+    }
 
-
-export const ButtonRgb = ({text, ...props}) => {
     return(
         <DivButton>
-            <Button {...props}>{text}</Button>
+            <Button onClick={hadleHome}>{Text}</Button>
         </DivButton>
     )
 }
