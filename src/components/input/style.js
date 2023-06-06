@@ -1,61 +1,39 @@
 import styled from "styled-components";
 
 
-export const DivInput = styled.div`
+export const DivForm = styled.form`
   position: relative;
-  padding: 15px 0 0;
-  margin-top: 10px;
-  width: 50%;
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px solid #0d1c4e;
+  margin: 30px 0; 
+`
+
+
+
+export const Input = styled.input`
+  padding: 0 6px;
+  font-size: 1.05em;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+
 `
 
 export const Label = styled.label`
   position: absolute;
-  top: 0;
-  display: block;
-  transition: 0.2s;
-  font-size: 1rem;
-  color: gray;
-
-`
-
-export const Input = styled.input`
- font-family: inherit;
-  width: 100%;
-  border: 0;
-  border-bottom: 2px solid gray;
-  outline: 0;
-  font-size: 1.3rem;
-  color:white;
-  padding: 7px 0;
-  background: transparent;
-  transition: border-color 0.2s;
-
-  &::placeholder {
-    color: transparent;
-  }
-
-  &::placeholder-shown ~ ${Label} {
-    font-size: 1.3rem;
-    cursor: text;
-    top: 20px;
-  }
-
-  &:focus{
-    ~ ${Label} {
-    position: absolute;
-    top: 0;
-    display: block;
-    transition: 0.2s;
-    font-size: 1rem;
-    color: red;
-    font-weight:700;    
-  }
-  padding-bottom: 6px;  
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 1.1em;
+  color: #0d1c4e;
   font-weight: 700;
-  border-width: 3px;
-  border-image: linear-gradient(to right,red,black);
-  border-image-slice: 1;
+  pointer-events: none;
+  transition: 0.5s;
+  ${Input}:focus ~ &  ,${Input}:valid ~& {
+    top: -5px;
   }
-
 `
-

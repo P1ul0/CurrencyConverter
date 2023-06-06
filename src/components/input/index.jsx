@@ -1,11 +1,11 @@
-import { DivInput, Label } from "./style"
+import { DivForm,Input, Label } from "./style"
 
 
-export const Input = ({Type , PlaceHolder, Name, Id }) => {
+export const InputGlobal = ({Type ,  Name, Id }) => {
     return (
-        <DivInput>
-            <Input type={Type} placeholder={PlaceHolder} name={Name} id ={Id}/>
-            <Label for={Name}>{Name}</Label>
-        </DivInput>
+        <DivForm>
+            <Input type={Type} name={Name} id ={Id} required/>
+            <Label htmlfor={Id}>{Name}</Label>
+        </DivForm>
     )
 }

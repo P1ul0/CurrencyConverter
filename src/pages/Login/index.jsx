@@ -1,10 +1,13 @@
-import { Input } from "../../components/input"
+import { InputGlobal } from "../../components/input"
+import { DivLogin } from "./style"
 
 
 export const Login = () => {
     return(
         <>
-        <Input Type="email" PlaceHolder="Email" Name="Email" Id= "2" />
+        <DivLogin>
+        <InputGlobal Type="email" Name="Email" Id= "2" />
+        </DivLogin>
         </>
     )
 }
