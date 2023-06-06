@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const DivForm = styled.form`
   position: relative;
-  width: 100%;
+  width: 50%;
   height: 50px;
   border-bottom: 2px solid #0d1c4e;
   margin: 30px 0; 
@@ -14,7 +14,7 @@ export const DivForm = styled.form`
 export const Input = styled.input`
   padding: 0 6px;
   font-size: 1.05em;
-  color: #fff;
+  color: #000;
   width: 100%;
   height: 100%;
   background-color: transparent;

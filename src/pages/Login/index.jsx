@@ -1,12 +1,17 @@
+import { ButtonRgb } from "../../components/button"
 import { InputGlobal } from "../../components/input"
-import { DivLogin } from "./style"
+import { DivCenter, DivLogin } from "./style"
 
 
 export const Login = () => {
     return(
         <>
         <DivLogin>
-        <InputGlobal Type="email" Name="Email" Id= "2" />
+            <DivCenter>
+            <InputGlobal Type="text" Name="Email" Id= "1" />
+            <InputGlobal Type="password" Name="Password" Id= "2" />
+            <ButtonRgb text="Login"/>
+            </DivCenter>
         </DivLogin>
         </>
     )
