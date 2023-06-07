@@ -9,7 +9,7 @@ export const DivRegister = styled.div`
     align-items: center;
 `
 
-export const DivCenter = styled.div`
+export const FormCenter = styled.form`
     position: absolute;
     display: flex;
     flex-direction: column;

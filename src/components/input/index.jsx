@@ -1,11 +1,13 @@
-import { DivForm,Input, Label } from "./style"
+import { DivForm,ErrorHandling,Input, Label } from "./style"
 
 
-export const InputGlobal = ({Type ,  Name, Id, ...props } ) => {
+export const InputGlobal = ({register, error, label , ...props } ) => {
+
     return (
         <DivForm >
-            <Input type={Type} name={Name} id ={Id} {...props} required/>
-            <Label htmlfor={Id}>{Name}</Label>
+            <Input { ...props } { ...register(props.name) } required/>
+            <Label htmlfor={props.id}>{label}</Label>
+            {error && <ErrorHandling>{error}</ErrorHandling>}
         </DivForm>
     )
 }

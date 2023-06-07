@@ -17,7 +17,7 @@ export const Button = styled.button`
     z-index: 0;
     border-radius: 10px;
 
-    &::before{
+    &:hover::before{
     content: '';
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
     position: absolute;
@@ -29,21 +29,17 @@ export const Button = styled.button`
     width: calc(100% + 4px);
     height: calc(100% + 4px);
     animation: glowing 20s linear infinite;
-    opacity: 0;
+    opacity: 1;
     transition: opacity .3s ease-in-out;
     border-radius: 10px;
     }
 
-    &:active{
+    &:hover{
         color: #000
     }
 
-    &:active::after{
+    &:hover::after{
         background: transparent;
-    }
-
-    &:hover::before{
-        opacity: 1;
     }
 
     &::after{

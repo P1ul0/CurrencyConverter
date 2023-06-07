@@ -1,21 +1,29 @@
 import { ButtonRgb } from "../../components/button"
 import { InputGlobal } from "../../components/input"
-import { DivCenter, DivRegister, Title } from "./style"
+import { FormCenter, DivRegister, Title } from "./style"
 import { ButtonRedirect } from "../../components/buttonRedirect"
+import { RegisterIn } from "../../schemas"
+import { useNavigate } from "react-router"
 
 export const Register = () => {
+    const navigate = useNavigate();
+    const form = RegisterIn();
+    const onSubmit = (data) => {
+        console.log(data);
+        navigate("/")
+    };
     return(
         <>
         <DivRegister>
-            <DivCenter>
+            <FormCenter onSubmit={form.handleSubmit(onSubmit)}>
                 <Title>Registre-se</Title>
-                <InputGlobal Type="text" Name="Nome De Usuário" Id="3"/>
-                <InputGlobal Type="text" Name="Email" Id="4"/>
-                <InputGlobal Type="password" Name="Password" Id="5"/>
-                <InputGlobal Type="password" Name="Confirm Password" Id="6"/>
+                <InputGlobal register={form.register} error={form.errors.username?.message} name="username" type="text" label="Nome De Usuário" id="3"/>
+                <InputGlobal register={form.register} error={form.errors.email?.message} name="email" type="text" label="Email" id="4"/>
+                <InputGlobal register={form.register} error={form.errors.password?.message} name="password" type="password" label="Password" id="5"/>
+                <InputGlobal register={form.register} error={form.errors.confirmPassword?.message} name="confirmPassword" type="password" label="Confirm Password" id="6"/>
                 <ButtonRedirect Text="Ja Possui Cadastro ?"  Rota="/"/>
-                <ButtonRgb  Rota="/" Text="Registre-se"/>
-            </DivCenter>
+                <ButtonRgb   text="Registre-se"/>
+            </FormCenter>
         </DivRegister>
         </>
     )
