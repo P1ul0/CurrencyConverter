@@ -5,7 +5,19 @@ export const DivButton = styled.div`
 
 `
 
-export const Button = styled.button`
+export const ButtonDisable = styled.button`
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+`
+
+export const ButtonActive = styled.button`
     width: 220px;
     height: 50px;
     border: none;
@@ -16,8 +28,8 @@ export const Button = styled.button`
     position: relative;
     z-index: 0;
     border-radius: 10px;
-
-    &:hover::before{
+    
+    &::before{
     content: '';
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
     position: absolute;

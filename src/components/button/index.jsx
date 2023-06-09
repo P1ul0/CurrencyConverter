@@ -1,9 +1,14 @@
-import { Button, DivButton } from "./style"
+import { ButtonActive, ButtonDisable, DivButton } from "./style"
 
-export const ButtonRgb = ({text}) => {
+export const ButtonRgb = ({text, status}) => {
     return(
         <DivButton >
-            <Button type={"submit"} >{text}</Button>
+            {status === true ? 
+            <ButtonActive type={"submit"}> {text}</ButtonActive>
+            :
+            <ButtonDisable type={"submit"} >{text}</ButtonDisable>
+            }
+            
         </DivButton>
     )
 }
