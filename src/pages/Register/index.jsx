@@ -16,7 +16,7 @@ export const Register = () => {
     const confirmPassword = form.watch("confirmPassword");
 
     useEffect(() => {
-        if( username !== "" && username.length >=8 && email.includes("@gmail.com") && password.length >= 6 && confirmPassword.length >= 6 && password === confirmPassword){
+        if(username !== "" && username.length >=8 && email.includes("@gmail.com") && password.length >= 6 && confirmPassword.length >= 6 && password === confirmPassword){
             setActiveButton(true);
         }else{
             setActiveButton(false);

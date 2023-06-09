@@ -16,13 +16,9 @@ export const Login = () => {
 
     useEffect(() => {
         if(email.includes("@gmail.com") && password.length >= 6){
-            console.log(activeButton);
             setActiveButton(true);
-            console.log(activeButton);
         }else{
-            console.log(activeButton);
             setActiveButton(false);
-            console.log(activeButton);
         }
     },[form.watch("email") , form.watch("password"),activeButton])
 
