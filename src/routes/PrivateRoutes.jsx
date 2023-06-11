@@ -7,9 +7,8 @@ import { Carteira } from "../pages/Carteira"
 export const PrivateRoutes = () => {
     return(
         <Routes>
-            <Route element={<ProtectedRoutes/>}>
+            {/*<Route element={<ProtectedRoutes/>}></Route>*/}
             <Route path="/carteira" element={<Carteira/>}/>
-            </Route>
         </Routes>
 
     )

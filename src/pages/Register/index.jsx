@@ -14,7 +14,6 @@ export const Register = () => {
     const email = form.watch("email");
     const password = form.watch("password");
     const confirmPassword = form.watch("confirmPassword");
-    const Storage = JSON.parse(localStorage.getItem('user'))
 
     useEffect(() => {
         if(username !== "" && username.length >=8 && email.includes("@gmail.com" || "@hotmail.com")  && password.length >= 6 && confirmPassword.length >= 6 && password === confirmPassword){
@@ -26,8 +25,7 @@ export const Register = () => {
 
     const onSubmit = (data) => {
         localStorage.setItem('user',JSON.stringify(data))
-        console.log(Storage);
-        navigate("/home/carteira")
+        navigate("/login")
     };
     return(
         <>

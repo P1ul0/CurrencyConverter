@@ -15,7 +15,7 @@ export const Login = () => {
     const password = form.watch("password");
 
     useEffect(() => {
-        if(email.includes("@gmail.com") || email.includes("@hotmail.com")  && password.length >= 6){
+        if(email.includes("@gmail.com")  && password.length >= 6){
             setActiveButton(true);
         }else{
             setActiveButton(false);
@@ -23,8 +23,8 @@ export const Login = () => {
     },[form.watch("email") , form.watch("password"),activeButton])
 
     const onSubmit = (data) => {
-      
-        navigate("/carteira")
+        localStorage.setItem("user",data)
+        navigate("/home/carteira")
     };
     
     return(
