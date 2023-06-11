@@ -7,7 +7,7 @@ const SignInSchema = yup.object().shape({
     email: yup
     .string("E-mail invalido      Ex:example@gmail.com")
     .email("E-mail invalido      Ex:example@gmail.com")
-    .test('is-gmail','E-mail invalido      Ex:example@gmail.com',value => value.endsWith('@gmail.com'))
+    .test('is-gmail'||  'is-hotmail','E-mail invalido      Ex:example@gmail/hotmail.com',value => value.endsWith('@gmail.com') || value.endsWith('@hotmail.com'))
     .required(' E-mail é obrigatório'),
     password: yup.string().min(6, 'A senha deve conter 6 caracteres').required('Senha é obrigatória'),
 });
@@ -17,7 +17,7 @@ const RegisterSchema = yup.object().shape({
     email: yup
     .string()
     .email()
-    .test('is-gmail','E-mail invalido      Ex:example@gmail.com',value => value.endsWith('@gmail.com'))
+    .test('is-gmail'||  'is-hotmail','E-mail invalido      Ex:example@gmail/hotmail.com',value => value.endsWith('@gmail.com') || value.endsWith('@hotmail.com'))
     .required(' E-mail é obrigatório'),
     password: yup.string().min(6, 'A senha deve conter 6 caracteres').required('Senha é obrigatória'),
     confirmPassword: yup

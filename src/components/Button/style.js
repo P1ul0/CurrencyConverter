@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 export const DivButton = styled.div`
-
+   
 `
 
 export const ButtonDisable = styled.button`

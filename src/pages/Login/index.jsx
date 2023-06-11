@@ -1,7 +1,7 @@
-import { ButtonRgb } from "../../components/button"
-import { InputGlobal } from "../../components/input"
+import { ButtonRgb } from "../../components/Button"
+import { InputGlobal } from "../../components/Input"
 import {  FormCenter, DivLogin, Title } from "./style"
-import { ButtonRedirect } from "../../components/buttonRedirect"
+import { ButtonRedirect } from "../../components/ButtonRedirect"
 import { signIn } from "../../schemas"
 import { useNavigate } from "react-router"
 import { useEffect, useState } from "react"
@@ -15,7 +15,7 @@ export const Login = () => {
     const password = form.watch("password");
 
     useEffect(() => {
-        if(email.includes("@gmail.com") && password.length >= 6){
+        if(email.includes("@gmail.com") || email.includes("@hotmail.com")  && password.length >= 6){
             setActiveButton(true);
         }else{
             setActiveButton(false);

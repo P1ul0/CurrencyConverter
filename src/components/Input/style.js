@@ -41,6 +41,6 @@ export const ErrorHandling = styled.p`
   font-size: 15px;
   font-weight: bold;
   margin-top: 5px;
-  color: red ;
+  color: #581908 ;
   
 `
