@@ -7,7 +7,7 @@ import { useNavigate } from "react-router"
 import { useEffect, useState } from "react"
 
 
-export const Login = () => {
+export const Login = ({ hadleLogin } ) => {
     const form = signIn();
     const navigate = useNavigate();
     const [activeButton, setActiveButton] = useState(false);
@@ -23,7 +23,7 @@ export const Login = () => {
     },[form.watch("email") , form.watch("password"),activeButton])
 
     const onSubmit = (data) => {
-        localStorage.setItem("user",data)
+        hadleLogin(data)
         navigate("/home/carteira")
     };
     

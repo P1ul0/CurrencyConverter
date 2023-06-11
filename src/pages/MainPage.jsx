@@ -1,6 +1,6 @@
 
-import { PrivateRoutes } from "../../routes/PrivateRoutes"
-import { HeaderLogin } from "../Header"
+import { PrivateRoutes } from "../routes/PrivateRoutes"
+import { HeaderLogin } from "../components/Header"
 
 
 
