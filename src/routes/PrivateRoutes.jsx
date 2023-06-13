@@ -1,17 +1,20 @@
-import { Route, Routes } from "react-router"
-import { ProtectedRoutes } from "./ProtectedRoutes"
-import { Carteira } from "../pages/Carteira"
 
-
+import { Outlet, Navigate } from "react-router"
+import { Loading } from "../components/Load"
+import { useContext } from "react";
+import { validationContext } from "../context";
 
 export const PrivateRoutes = () => {
-    return(
-        <Routes>
-            <Route element={<ProtectedRoutes/>}>
-            <Route path="/carteira" element={<Carteira/>}/>
-            </Route>
-            
-        </Routes>
+    const {load, setLoad} = useContext(validationContext) ;
 
+    if(load === null){
+        return <Loading/>
+    }
+   
+    return load ? (
+    
+        <Outlet/>
+    ): (
+        <Navigate to="/login"/>
     )
 }

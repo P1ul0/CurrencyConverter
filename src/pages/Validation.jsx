@@ -13,9 +13,9 @@ export const Validation = ({isLogged}) => {
       if (!isLogged) {
         navigate('/login');
       } else {
-        navigate('/home/carteira');
+        navigate('/');
       }
-    }, 1900);
+    }, 2000);
     return () => clearTimeout(timer);
   }, []);
 

@@ -13,8 +13,9 @@ export const FormCenter = styled.form`
     position: absolute;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    height: 85vh;
+    height: 70vh;
     width: 500px;
     background-color: rgb(255, 255, 222, 0.5);
     backdrop-filter: blur(10px);
