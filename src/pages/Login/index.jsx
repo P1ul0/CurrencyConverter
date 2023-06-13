@@ -4,12 +4,13 @@ import { FormCenter, DivLogin, Title } from "./style";
 import { ButtonRedirect } from "../../components/ButtonRedirect";
 import { signIn } from "../../schemas";
 import { useEffect, useState } from "react";
-import { Navigate } from "react-router";
+import { useNavigate } from "react-router";
+
 
 export const Login = ({ hadleLogin }) => {
   const form = signIn();
   const [activeButton, setActiveButton] = useState(false);
-
+  const navigate = useNavigate();
   const email = form.watch("email");
   const password = form.watch("password");
 
@@ -21,9 +22,9 @@ export const Login = ({ hadleLogin }) => {
     }
   }, [form.watch("email"), form.watch("password"), activeButton]);
 
-  const onSubmit = async (data) => {
-    hadleLogin(data);
-    <Navigate to="/carteira"/>
+  const onSubmit = async (user) => {
+    hadleLogin(user);
+    navigate("/carteira")
   };
 
   return (

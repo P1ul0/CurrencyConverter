@@ -25,7 +25,7 @@ export const Register = () => {
 
     const onSubmit = (data) => {
         localStorage.setItem('user',JSON.stringify(data))
-        navigate("/login")
+        navigate("/carteira")
     };
     return(
         <>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createContext } from "react";
-import { useNavigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 
 
 export const ValidationContext = createContext({})
@@ -16,20 +16,20 @@ export const ValidationProvider = ({ children }) => {
         Object.keys(loggedUser).length === 0 ? false : true
     );
 
- 
-
-
-  const hadleLogin = (user) => {
-    navigate("/carteira")
+  const hadleLogin = async(user) => {
     localStorage.setItem("user", JSON.stringify(user))
     setLoggedUser(user);
     setIsLogged(true);
-    setLoad(false)
-    
+    setLoad(false);
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+    setLoad(true);
+    navigate("/carteira")
+
   }
 
     const values = {
         load,
+        setLoad,
         loggedUser,
         isLogged,
         hadleLogin
