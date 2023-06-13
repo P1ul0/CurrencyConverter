@@ -1,16 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {App} from "./routes/App"
-import { validationProvider } from './context'
+import { ValidationProvider } from './context'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter basename={"/MoneyTracker"}>
-      <validationProvider>
+      <ValidationProvider>
         <App />
-      </validationProvider>
+      </ValidationProvider>
     
     </BrowserRouter>
    

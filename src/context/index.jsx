@@ -3,33 +3,42 @@ import { createContext } from "react";
 import { useNavigate } from "react-router";
 
 
-export const validationContext = createContext({})
+export const ValidationContext = createContext({})
 
 
-export const validationProvider = ({ children }) => {
+export const ValidationProvider = ({ children }) => {
     const [load, setLoad] = useState(null)
     const navigate = useNavigate()
+    const [loggedUser, setLoggedUser] = useState(
+        JSON.parse(localStorage.getItem('user')) || {}
+      );
+    const [isLogged, setIsLogged] = useState(
+        Object.keys(loggedUser).length === 0 ? false : true
+    );
 
-    const verifyStorage = () => {
-        let storage = JSON.parse(localStorage.getItem("user"))
-        if(!storage){
-            navigate("/login")
-        }else{
-            navigate("/carteira")
-        }
+ 
 
-    }
+
+  const hadleLogin = (user) => {
+    navigate("/carteira")
+    localStorage.setItem("user", JSON.stringify(user))
+    setLoggedUser(user);
+    setIsLogged(true);
+    setLoad(false)
+    
+  }
 
     const values = {
         load,
-        setLoad,
-        verifyStorage
+        loggedUser,
+        isLogged,
+        hadleLogin
     }
 
     return(
-        <validationContext.Provider value={values}>
+        <ValidationContext.Provider value={values}>
             {children}
-        </validationContext.Provider>
+        </ValidationContext.Provider>
     )
 }
 

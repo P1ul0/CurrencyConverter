@@ -3,12 +3,11 @@ import { InputGlobal } from "../../components/Input";
 import { FormCenter, DivLogin, Title } from "./style";
 import { ButtonRedirect } from "../../components/ButtonRedirect";
 import { signIn } from "../../schemas";
-import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
+import { Navigate } from "react-router";
 
 export const Login = ({ hadleLogin }) => {
   const form = signIn();
-  const navigate = useNavigate();
   const [activeButton, setActiveButton] = useState(false);
 
   const email = form.watch("email");
@@ -24,7 +23,7 @@ export const Login = ({ hadleLogin }) => {
 
   const onSubmit = async (data) => {
     hadleLogin(data);
-    navigate("/carteira");
+    <Navigate to="/carteira"/>
   };
 
   return (
