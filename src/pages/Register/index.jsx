@@ -24,8 +24,7 @@ export const Register = () => {
     },[form.watch("username"),form.watch("email") , form.watch("password"),form.watch("confirmPassword"),activeButton])
 
     const onSubmit = (data) => {
-        localStorage.setItem('user',JSON.stringify(data))
-        navigate("/carteira")
+        navigate("/")
     };
     return(
         <>
@@ -36,7 +35,7 @@ export const Register = () => {
                 <InputGlobal register={form.register} error={form.errors.email?.message} name="email" type="text" label="Email" id="4"/>
                 <InputGlobal register={form.register} error={form.errors.password?.message} name="password" type="password" label="Password" id="5"/>
                 <InputGlobal register={form.register} error={form.errors.confirmPassword?.message} name="confirmPassword" type="password" label="Confirm Password" id="6"/>
-                <ButtonRedirect Text="Ja Possui Cadastro ?"  Rota="/login"/>
+                <ButtonRedirect Text="Ja Possui Cadastro ?"  Rota="/"/>
                 <ButtonRgb text="Registre-se" status={activeButton}/>
             </FormCenter>
         </DivRegister>

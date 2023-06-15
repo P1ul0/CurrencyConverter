@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 export const DivForm = styled.form`
   position: relative;
-  width: 50%;
-  height: 50px;
-  border-bottom: 2px solid #0d1c4e;
+  width: ${({tamanhoW}) => tamanhoW ? tamanhoW : "50%" } ;
+  height: ${({tamanhoH}) => tamanhoH ? tamanhoH : "50px"};
+  border-bottom:${({bottom})=> bottom ? bottom : "2px solid #0d1c4e"} ;
   margin: 30px 0; 
 `
 
@@ -14,7 +14,7 @@ export const DivForm = styled.form`
 export const Input = styled.input`
   padding: 0 6px;
   font-size: 1.05em;
-  color: #000;
+  color: ${({color}) =>color ? color: "#000" } ;
   width: 100%;
   height: 100%;
   background-color: transparent;
@@ -29,7 +29,7 @@ export const Label = styled.label`
   left: 5px;
   transform: translateY(-50%);
   font-size: 1.1em;
-  color: #0d1c4e;
+  color: ${({color}) =>color ? color: "#0d1c4e" } ;
   font-weight: 700;
   pointer-events: none;
   transition: 0.5s;
@@ -40,7 +40,7 @@ export const Label = styled.label`
 export const ErrorHandling = styled.p`
   font-size: 15px;
   font-weight: bold;
-  margin-top: 5px;
-  color: #581908 ;
+  margin-top: 8px;
+  color: ${({colorError}) => colorError ? colorError : "#581908"} ;
   
 `

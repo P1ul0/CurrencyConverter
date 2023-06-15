@@ -10,7 +10,7 @@ export const DivRegister = styled.div`
 `
 
 export const FormCenter = styled.form`
-    position: absolute;
+
     display: flex;
     flex-direction: column;
     justify-content: center;

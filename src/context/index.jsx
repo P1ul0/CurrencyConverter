@@ -7,8 +7,9 @@ export const ValidationContext = createContext({})
 
 
 export const ValidationProvider = ({ children }) => {
-    const [load, setLoad] = useState(null)
-    const navigate = useNavigate()
+    const [load, setLoad] = useState(null);
+    const [ modal , setModal] = useState(false);
+    const navigate = useNavigate();
     const [loggedUser, setLoggedUser] = useState(
         JSON.parse(localStorage.getItem('user')) || {}
       );
@@ -24,15 +25,24 @@ export const ValidationProvider = ({ children }) => {
     await new Promise((resolve) => setTimeout(resolve, 1000))
     setLoad(true);
     navigate("/carteira")
+  }
 
+  const activeModal = () => {
+    setModal(true)
+  }
+  const deactivateModal = () => {
+    setModal(false)
   }
 
     const values = {
+        modal,
         load,
         setLoad,
         loggedUser,
         isLogged,
-        hadleLogin
+        hadleLogin,
+        activeModal,
+        deactivateModal
     }
 
     return(
