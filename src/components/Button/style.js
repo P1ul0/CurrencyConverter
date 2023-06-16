@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 
 export const DivButton = styled.div`
-   
+   width:fit-content;
+
 `
 
 export const ButtonDisable = styled.button`
-    width: 220px;
+    width: ${({tamanhoW}) => tamanhoW ? tamanhoW : "220px"};
     height: 50px;
     border: none;
     outline: none;
@@ -15,10 +16,11 @@ export const ButtonDisable = styled.button`
     position: relative;
     z-index: 0;
     border-radius: 10px;
+    cursor:not-allowed;
 `
 
 export const ButtonActive = styled.button`
-    width: 220px;
+    width: ${({tamanhoW}) => tamanhoW ? tamanhoW : "220px"};
     height: 50px;
     border: none;
     outline: none;

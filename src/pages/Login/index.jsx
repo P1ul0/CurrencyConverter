@@ -2,13 +2,13 @@ import { ButtonRgb } from "../../components/Button";
 import { InputGlobal } from "../../components/Input";
 import { FormCenter, DivLogin, Title } from "./style";
 import { ButtonRedirect } from "../../components/ButtonRedirect";
-import { signIn } from "../../schemas";
+import { SignIn } from "../../schemas";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 
 export const Login = ({ hadleLogin }) => {
-  const form = signIn();
+  const form = SignIn();
   const [activeButton, setActiveButton] = useState(false);
   const navigate = useNavigate();
   const email = form.watch("email");

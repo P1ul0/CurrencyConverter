@@ -54,19 +54,14 @@ export const FormInput = styled.form`
     margin-top: 10px;
     display: flex;
     flex-flow: row wrap;  
-    justify-content: center;
-    gap: 80px ;
-`
-
-export const SelectInput = styled.select`
-  height: 50px;
-  width: 250px;
-  color: white;
-  background-color: transparent;
-  border-bottom: 2px solid white;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
 `
 
 export const OptionInput = styled.option`
-
   padding: 30px;
+  color:black;
 `
+
+

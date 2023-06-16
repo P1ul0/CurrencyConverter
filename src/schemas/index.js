@@ -51,7 +51,7 @@ export const FormIn = () => {
 
 }
 
-export const signIn = () => {
+export const SignIn = () => {
     const {register,reset,watch,handleSubmit, formState: { errors,},}  = useForm({
         resolver: yupResolver(SignInSchema),
         mode:'all',
