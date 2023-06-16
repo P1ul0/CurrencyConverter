@@ -17,6 +17,7 @@ export const ButtonDisable = styled.button`
     z-index: 0;
     border-radius: 10px;
     cursor:not-allowed;
+    
 `
 
 export const ButtonActive = styled.button`

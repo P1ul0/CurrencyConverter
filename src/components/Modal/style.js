@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TfiClose } from "react-icons/tfi";
+
 
 export const DivModal = styled.div`
   position: fixed;
@@ -27,36 +27,23 @@ export const DivConteudo = styled.div`
   height: 70vh;
   z-index: 50;
 `;
-export const DivSuperiorModal = styled.div`
-    height: 50px;
-    display: flex;
-    flex-direction: row-reverse;
-`
 
-export const CloseModalButton = styled.button`
-    height: 50px;
-    width: 50px;
-    border: none;
-    color: white;
-    cursor: pointer;
-    background-color: transparent;
-`;
-
-export const CloseModalImg = styled(TfiClose)`
-  height: 70%;
-  width: 70%;
-  object-fit: contain;
-`;
 
 export const FormInput = styled.form`
     height: 90%;
     width: 100%;
-    margin-top: 10px;
     display: flex;
     flex-flow: row wrap;  
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
-    padding: 0 60px;
+    padding: 20px 40px;
+`
+export const DivButtonInput = styled.div`
+  height: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 export const OptionInput = styled.option`

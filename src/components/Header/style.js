@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {MdOutlineAddTask} from "react-icons/md"
-
+import { TfiClose } from "react-icons/tfi";
 export const Header = styled.header`
     width: 100%;
     height: 70px;
@@ -10,6 +10,7 @@ export const Header = styled.header`
     justify-content: space-between;
     align-items: center;
     background: transparent;
+    z-index: 50;
 `
 
 export const LogoHeader = styled.img`
@@ -33,3 +34,20 @@ export const ImgButtonAdd = styled(MdOutlineAddTask)`
     object-fit: contain;
     color: green;
 `
+
+
+export const CloseModalButton = styled.button`
+    width: 50px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 10px;
+    background: black;
+`;
+
+export const CloseModalImg = styled(TfiClose)`
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+  color: red;
+`;

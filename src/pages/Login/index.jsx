@@ -6,7 +6,6 @@ import { SignIn } from "../../schemas";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-
 export const Login = ({ hadleLogin }) => {
   const form = SignIn();
   const [activeButton, setActiveButton] = useState(false);
@@ -15,7 +14,12 @@ export const Login = ({ hadleLogin }) => {
   const password = form.watch("password");
 
   useEffect(() => {
-    if (email.includes("@gmail.com") && password.length >= 6) {
+    let regex = /\S+@\S+\.\S+/;
+    if (
+    regex.test(email)
+     && password.length >= 6
+     ) 
+     {
       setActiveButton(true);
     } else {
       setActiveButton(false);
@@ -24,7 +28,7 @@ export const Login = ({ hadleLogin }) => {
 
   const onSubmit = async (user) => {
     hadleLogin(user);
-    navigate("/carteira")
+    navigate("/carteira");
   };
 
   return (
@@ -48,10 +52,7 @@ export const Login = ({ hadleLogin }) => {
             name="password"
             id="2"
           />
-          <ButtonRedirect
-            Text="Registre-se"
-            Rota="/register"
-          />
+          <ButtonRedirect Text="Registre-se" Rota="/register" />
           <ButtonRgb text="Login" status={activeButton} />
         </FormCenter>
       </DivLogin>

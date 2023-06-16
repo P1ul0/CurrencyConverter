@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import { createContext } from "react";
-import { Navigate, useNavigate } from "react-router";
-import { FormIn, RegisterIn, SignIn } from "../schemas";
+import {  useNavigate } from "react-router";
+import { RegisterIn, SignIn } from "../schemas";
 
 export const ValidationContext = createContext({});
 
 export const ValidationProvider = ({ children }) => {
   const [load, setLoad] = useState(null);
   const [modal, setModal] = useState(false);
-  const [activeButton, setActiveButton] = useState(false);
+  
   const [loggedUser, setLoggedUser] = useState(
     JSON.parse(localStorage.getItem("user")) || {}
   );
@@ -20,7 +20,7 @@ export const ValidationProvider = ({ children }) => {
 
   const formLogin = SignIn();
   const formRegister = RegisterIn();
-  const formAdicionar = FormIn;
+
 
   
   const hadleLogin = async (user) => {
@@ -40,29 +40,6 @@ export const ValidationProvider = ({ children }) => {
     setModal(false);
   };
 
-useEffect(()=> {
-    if(
-      formAdicionar.watch("pantryValue") !="" &&
-      formAdicionar.watch("expenseDescription") !=""&&
-      formAdicionar.watch("expenseCurrency")!=""&&
-      formAdicionar.watch("paymentMthod")!=""&&
-      formAdicionar.watch("expenseTag") !=""
-    ){
-      setActiveButton(true)
-    }else{
-      setActiveButton(false)
-    }
-},
- [
-  formAdicionar.watch("pantryValue"),
-  formAdicionar.watch("expenseDescription"),
-  formAdicionar.watch("expenseCurrency"),
-  formAdicionar.watch("paymentMthod"),
-  formAdicionar.watch("expenseTag"),
-  activeButton
-])
-  
-
   const values = {
     modal,
     load,
@@ -71,9 +48,7 @@ useEffect(()=> {
     isLogged,
     hadleLogin,
     activeModal,
-    deactivateModal,
-    verifyForm,
-    activeButton
+    deactivateModal
   };
 
   return (
