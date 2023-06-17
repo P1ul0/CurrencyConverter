@@ -11,18 +11,13 @@ export const DivModal = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 49;
-  background: rgb(185, 215, 0);
-  background: linear-gradient(
-    340deg,
-    rgba(185, 215, 0, 1) 15%,
-    rgba(41, 45, 3, 1) 62%
-  );
+  background-color: rgba(28,26,18,0.5);
 `;
 
 export const DivConteudo = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 1);
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 20px;
   width: 70vw;
   height: 70vh;
   z-index: 50;

@@ -55,7 +55,7 @@ export const Modal = ({ TamanhoH, TamanhoW }) => {
               type="text"
               name="expenseDescription"
               id="1"
-              TamanhoW="90%"
+              TamanhoW="94%"
               Bottom="2px solid white"
               Color="white"
               ColorError="#F80606"
@@ -67,7 +67,7 @@ export const Modal = ({ TamanhoH, TamanhoW }) => {
               type="text"
               name="pantryValue"
               id="1"
-              TamanhoW="350px"
+              TamanhoW="45%"
               Bottom="2px solid white"
               Color="white"
               ColorError="#F80606"
@@ -79,7 +79,7 @@ export const Modal = ({ TamanhoH, TamanhoW }) => {
               error={formAdicionar.errors.expenseCurrency?.message}
               name="expenseCurrency"
               id="1"
-              TamanhoW="350px"
+              TamanhoW="45%"
               Bottom="2px solid white"
               Color="white"
               ColorError="#F80606"
@@ -93,7 +93,7 @@ export const Modal = ({ TamanhoH, TamanhoW }) => {
               error={formAdicionar.errors.paymentMthod?.message}
               name="paymentMthod"
               id="2"
-              TamanhoW="350px"
+              TamanhoW="45%"
               Bottom="2px solid white"
               Color="white"
               ColorError="#F80606"
@@ -110,7 +110,7 @@ export const Modal = ({ TamanhoH, TamanhoW }) => {
               error={formAdicionar.errors.expenseTag?.message}
               name="expenseTag"
               id="2"
-              TamanhoW="350px"
+              TamanhoW="45%"
               Bottom="2px solid white"
               Color="white"
               ColorError="#F80606"
@@ -125,7 +125,7 @@ export const Modal = ({ TamanhoH, TamanhoW }) => {
           </FormInput>
           <DivButtonInput>
             <ButtonRgb
-              TamanhoW="300px"
+              TamanhoW="450px"
               text="Adicionar"
               status={activeButton}
             />

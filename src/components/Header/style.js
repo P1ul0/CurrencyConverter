@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import {MdOutlineAddTask} from "react-icons/md"
-import { TfiClose } from "react-icons/tfi";
+import {SiAddthis} from "react-icons/si"
+import { IoMdCloseCircle } from "react-icons/io";
 export const Header = styled.header`
     width: 100%;
     height: 70px;
@@ -25,14 +25,14 @@ export const ButtonAdd = styled.button`
     border-radius: 10px;
     cursor: pointer;
     margin-right: 10px;
-    background: black;
+    background: transparent;
 `
 
-export const ImgButtonAdd = styled(MdOutlineAddTask)`
+export const ImgButtonAdd = styled(SiAddthis)`
     height: 40px;
     width: 40px;
     object-fit: contain;
-    color: green;
+    color: greenyellow;
 `
 
 
@@ -42,12 +42,12 @@ export const CloseModalButton = styled.button`
     border-radius: 10px;
     cursor: pointer;
     margin-right: 10px;
-    background: black;
+    background: transparent;
 `;
 
-export const CloseModalImg = styled(TfiClose)`
-  height: 40px;
-  width: 40px;
+export const CloseModalImg = styled(IoMdCloseCircle)`
+  height: 50px;
+  width: 50px;
   object-fit: contain;
   color: red;
 `;
