@@ -51,3 +51,24 @@ export const CloseModalImg = styled(IoMdCloseCircle)`
   object-fit: contain;
   color: red;
 `;
+
+export const DivSuperiorDireito = styled.div`
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+export const DivDados = styled.div`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+
+export const Paragrafo = styled.p`
+    font-size: ${({tamanho}) => tamanho ? tamanho : "20px"} ;
+    font-weight: bold;
+    color: white;
+    margin-right: 20px;
+`

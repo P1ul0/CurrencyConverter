@@ -8,6 +8,7 @@ export const ValidationContext = createContext({});
 export const ValidationProvider = ({ children }) => {
   const [load, setLoad] = useState(null);
   const [modal, setModal] = useState(false);
+  const [user, setUser] = useState("")
   
   const [loggedUser, setLoggedUser] = useState(
     JSON.parse(localStorage.getItem("user")) || {}
@@ -18,14 +19,11 @@ export const ValidationProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
-  const formLogin = SignIn();
-  const formRegister = RegisterIn();
-
-
   
   const hadleLogin = async (user) => {
     localStorage.setItem("user", JSON.stringify(user));
     setLoggedUser(user);
+    setUser(user.email)
     setIsLogged(true);
     setLoad(false);
     await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -48,7 +46,8 @@ export const ValidationProvider = ({ children }) => {
     isLogged,
     hadleLogin,
     activeModal,
-    deactivateModal
+    deactivateModal,
+    user
   };
 
   return (

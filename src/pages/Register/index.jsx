@@ -52,6 +52,9 @@ export const Register = () => {
             type="text"
             label="Nome De Usuário"
             id="3"
+            Color={"white"}
+            Bottom={"2px solid white"}
+            ColorError={"#F80606"}
           />
           <InputGlobal
             register={form.register}
@@ -60,6 +63,9 @@ export const Register = () => {
             type="text"
             label="Email"
             id="4"
+            Color={"white"}
+            Bottom={"2px solid white"}
+            ColorError={"#F80606"}
           />
           <InputGlobal
             register={form.register}
@@ -68,6 +74,9 @@ export const Register = () => {
             type="password"
             label="Password"
             id="5"
+            Color={"white"}
+            Bottom={"2px solid white"}
+            ColorError={"#F80606"}
           />
           <InputGlobal
             register={form.register}
@@ -76,6 +85,9 @@ export const Register = () => {
             type="password"
             label="Confirm Password"
             id="6"
+            Color={"white"}
+            Bottom={"2px solid white"}
+            ColorError={"#F80606"}
           />
           <ButtonRedirect Text="Ja Possui Cadastro ?" Rota="/" />
           <ButtonRgb text="Registre-se" status={activeButton} />

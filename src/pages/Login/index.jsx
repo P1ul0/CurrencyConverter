@@ -43,6 +43,9 @@ export const Login = ({ hadleLogin }) => {
             type="text"
             name="email"
             id="1"
+            Color={"white"}
+            Bottom={"2px solid white"}
+            ColorError={"#F80606"}
           />
           <InputGlobal
             label="Password"
@@ -51,6 +54,9 @@ export const Login = ({ hadleLogin }) => {
             type="password"
             name="password"
             id="2"
+            Color={"white"}
+            Bottom={"2px solid white"}
+            ColorError={"#F80606"}
           />
           <ButtonRedirect Text="Registre-se" Rota="/register" />
           <ButtonRgb text="Login" status={activeButton} />
