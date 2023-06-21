@@ -16,7 +16,7 @@ import { ValidationContext } from "../../context";
 import { Modal } from "../../components/Modal";
 
 export const Carteira = () => {
-  const { modal, wallet } = useContext(ValidationContext);
+  const { modal, removeExpense,wallet } = useContext(ValidationContext);
 
   return (
     <>
@@ -38,29 +38,32 @@ export const Carteira = () => {
             </TrTableCarteira>
             {wallet?.expenses.map((expense) => {
               const {
-                pantryValue,
+                id,
+                formatValue,
                 expenseDescription,
-                expenseCurrency,
+                filterName,
                 paymentMthod,
                 expenseTag,
+                filterExchange,
+                finalValue
               } = expense;
               return (
-                <TrTableCarteira>
+                <TrTableCarteira id={id}>
                   <TdTableCarteira>{expenseDescription}</TdTableCarteira>
                   <TdTableCarteira>{expenseTag}</TdTableCarteira>
                   <TdTableCarteira>{paymentMthod}</TdTableCarteira>
-                  <TdTableCarteira>{pantryValue}</TdTableCarteira>
-                  <TdTableCarteira>{expenseCurrency}</TdTableCarteira>
-                  <TdTableCarteira>Teste</TdTableCarteira>
-                  <TdTableCarteira>Teste</TdTableCarteira>
-                  <TdTableCarteira>BRL</TdTableCarteira>
+                  <TdTableCarteira>{formatValue}</TdTableCarteira>
+                  <TdTableCarteira>{filterName}</TdTableCarteira>
+                  <TdTableCarteira>{filterExchange}</TdTableCarteira>
+                  <TdTableCarteira>{finalValue}</TdTableCarteira>
+                  <TdTableCarteira>Real</TdTableCarteira>
                   <TdTableCarteira>
                     <DivButtonPerson>
                       <Button>
-                        <ImgEdit />
+                        <ImgEdit/>
                       </Button>
-                      <Button>
-                        <ImgDelete />
+                      <Button onClick={()=> removeExpense(expense)}>
+                        <ImgDelete/>
                       </Button>
                     </DivButtonPerson>
                   </TdTableCarteira>

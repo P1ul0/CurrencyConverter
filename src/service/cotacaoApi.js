@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-export const cotacaoUrl = "https://economia.awesomeapi.com.br/json"
+export const cotacaoUrl = "https://economia.awesomeapi.com.br"
 
 
 export const cotacaoApi = axios.create({

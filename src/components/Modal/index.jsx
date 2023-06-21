@@ -12,36 +12,37 @@ import { HeaderLogin } from "../Header/index";
 import { ValidationContext } from "../../context";
 import { FormIn } from "../../schemas";
 import { ButtonRgb } from "../Button";
+import { cotacaoApi } from "../../service/cotacaoApi";
 
 export const Modal = ({ TamanhoH, TamanhoW }) => {
   const { deactivateModal, addExpense, wallet } = useContext(ValidationContext);
   const [activeButton, setActiveButton] = useState(false);
-  const formAdicionar = FormIn();
+  const form = FormIn();
 
   useEffect(() => {
     if (
-      formAdicionar.watch("pantryValue") != "" &&
-      formAdicionar.watch("expenseDescription") != "" &&
-      formAdicionar.watch("expenseCurrency") != "" &&
-      formAdicionar.watch("paymentMthod") != "" &&
-      formAdicionar.watch("expenseTag") != ""
+      form.watch("pantryValue") != "" &&
+      form.watch("expenseDescription") != "" &&
+      form.watch("expenseCurrency") != "" &&
+      form.watch("paymentMthod") != "" &&
+      form.watch("expenseTag") != ""
     ) {
       setActiveButton(true);
     } else {
       setActiveButton(false);
     }
   }, [
-    formAdicionar.watch("pantryValue"),
-    formAdicionar.watch("expenseDescription"),
-    formAdicionar.watch("expenseCurrency"),
-    formAdicionar.watch("paymentMthod"),
-    formAdicionar.watch("expenseTag"),
+    form.watch("pantryValue"),
+    form.watch("expenseDescription"),
+    form.watch("expenseCurrency"),
+    form.watch("paymentMthod"),
+    form.watch("expenseTag"),
     activeButton,
   ]);
 
-  const onSubmit = (data) => {
-    addExpense(data)
-    console.log(wallet);
+  const onSubmit = (expense) => {
+    addExpense(expense)
+   
     deactivateModal()
   };
 
@@ -50,11 +51,11 @@ export const Modal = ({ TamanhoH, TamanhoW }) => {
       <HeaderLogin />
       <DivModal>
         <DivConteudo>
-          <FormInput onSubmit={formAdicionar.handleSubmit(onSubmit)}>
+          <FormInput onSubmit={form.handleSubmit(onSubmit)}>
             <InputGlobal
               label="Descrição da despesa"
-              register={formAdicionar.register}
-              error={formAdicionar.errors.expenseDescription?.message}
+              register={form.register}
+              error={form.errors.expenseDescription?.message}
               type="text"
               name="expenseDescription"
               TamanhoW="94%"
@@ -64,8 +65,8 @@ export const Modal = ({ TamanhoH, TamanhoW }) => {
             />
             <InputGlobal
               label="Valor da despesa"
-              register={formAdicionar.register}
-              error={formAdicionar.errors.pantryValue?.message}
+              register={form.register}
+              error={form.errors.pantryValue?.message}
               type="number"
               name="pantryValue"
               TamanhoW="45%"
@@ -76,8 +77,8 @@ export const Modal = ({ TamanhoH, TamanhoW }) => {
 
             <InputGlobal
               label="Moeda da despesa"
-              register={formAdicionar.register}
-              error={formAdicionar.errors.expenseCurrency?.message}
+              register={form.register}
+              error={form.errors.expenseCurrency?.message}
               name="expenseCurrency"
               type="text"
               TamanhoW="45%"
@@ -87,13 +88,13 @@ export const Modal = ({ TamanhoH, TamanhoW }) => {
               Select={true}
             >
               {wallet.currencies?.map((moeda) => {
-                return <OptionInput>{moeda}</OptionInput>;
+                return <OptionInput>{moeda.code}</OptionInput>;
               })}
             </InputGlobal>
             <InputGlobal
               label="Método de Pagamento"
-              register={formAdicionar.register}
-              error={formAdicionar.errors.paymentMthod?.message}
+              register={form.register}
+              error={form.errors.paymentMthod?.message}
               name="paymentMthod"
               TamanhoW="45%"
               Bottom="2px solid white"
@@ -108,8 +109,8 @@ export const Modal = ({ TamanhoH, TamanhoW }) => {
 
             <InputGlobal
               label="Tag da despesa"
-              register={formAdicionar.register}
-              error={formAdicionar.errors.expenseTag?.message}
+              register={form.register}
+              error={form.errors.expenseTag?.message}
               name="expenseTag"
               TamanhoW="45%"
               Bottom="2px solid white"
