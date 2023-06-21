@@ -5,8 +5,10 @@ import {
   TrTableCarteira,
   ThTableCarteira,
   TdTableCarteira,
-  ButtonEdit,
+  Button,
   ImgEdit,
+  ImgDelete,
+  DivButtonPerson,
 } from "./style";
 import { HeaderLogin } from "../../components/Header/index";
 import { useContext } from "react";
@@ -14,14 +16,13 @@ import { ValidationContext } from "../../context";
 import { Modal } from "../../components/Modal";
 
 export const Carteira = () => {
-  const { modal } = useContext(ValidationContext);
-
+  const { modal, wallet } = useContext(ValidationContext);
 
   return (
     <>
       <DivCarteira>
         <HeaderLogin />
-        {modal && (<Modal/>)}
+        {modal && <Modal />}
         <DivTableCarteira>
           <TableCarteira>
             <TrTableCarteira>
@@ -35,17 +36,37 @@ export const Carteira = () => {
               <ThTableCarteira>Moeda de conversão</ThTableCarteira>
               <ThTableCarteira>Editar/Excluir</ThTableCarteira>
             </TrTableCarteira>
-            <TrTableCarteira>
-                <TdTableCarteira>Carro</TdTableCarteira>
-                <TdTableCarteira>BRL</TdTableCarteira>
-                <TdTableCarteira>Dinheiro</TdTableCarteira>
-                <TdTableCarteira>200,00</TdTableCarteira>
-                <TdTableCarteira>Real</TdTableCarteira>
-                <TdTableCarteira>Manual</TdTableCarteira>
-                <TdTableCarteira>1400,00</TdTableCarteira>
-                <TdTableCarteira>Euro</TdTableCarteira>
-                <TdTableCarteira><ButtonEdit><ImgEdit/></ButtonEdit></TdTableCarteira>
-            </TrTableCarteira>
+            {wallet?.expenses.map((expense) => {
+              const {
+                pantryValue,
+                expenseDescription,
+                expenseCurrency,
+                paymentMthod,
+                expenseTag,
+              } = expense;
+              return (
+                <TrTableCarteira>
+                  <TdTableCarteira>{expenseDescription}</TdTableCarteira>
+                  <TdTableCarteira>{expenseTag}</TdTableCarteira>
+                  <TdTableCarteira>{paymentMthod}</TdTableCarteira>
+                  <TdTableCarteira>{pantryValue}</TdTableCarteira>
+                  <TdTableCarteira>{expenseCurrency}</TdTableCarteira>
+                  <TdTableCarteira>Teste</TdTableCarteira>
+                  <TdTableCarteira>Teste</TdTableCarteira>
+                  <TdTableCarteira>BRL</TdTableCarteira>
+                  <TdTableCarteira>
+                    <DivButtonPerson>
+                      <Button>
+                        <ImgEdit />
+                      </Button>
+                      <Button>
+                        <ImgDelete />
+                      </Button>
+                    </DivButtonPerson>
+                  </TdTableCarteira>
+                </TrTableCarteira>
+              );
+            })}
           </TableCarteira>
         </DivTableCarteira>
       </DivCarteira>

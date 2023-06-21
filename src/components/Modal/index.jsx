@@ -14,7 +14,7 @@ import { FormIn } from "../../schemas";
 import { ButtonRgb } from "../Button";
 
 export const Modal = ({ TamanhoH, TamanhoW }) => {
-  const { deactivateModal } = useContext(ValidationContext);
+  const { deactivateModal, addExpense, wallet } = useContext(ValidationContext);
   const [activeButton, setActiveButton] = useState(false);
   const formAdicionar = FormIn();
 
@@ -39,22 +39,24 @@ export const Modal = ({ TamanhoH, TamanhoW }) => {
     activeButton,
   ]);
 
-  const onSubmit = async () => {
-    deactivateModal();
+  const onSubmit = (data) => {
+    addExpense(data)
+    console.log(wallet);
+    deactivateModal()
   };
+
   return (
     <>
       <HeaderLogin />
       <DivModal>
         <DivConteudo>
           <FormInput onSubmit={formAdicionar.handleSubmit(onSubmit)}>
-          <InputGlobal
+            <InputGlobal
               label="Descrição da despesa"
               register={formAdicionar.register}
               error={formAdicionar.errors.expenseDescription?.message}
               type="text"
               name="expenseDescription"
-              id="1"
               TamanhoW="94%"
               Bottom="2px solid white"
               Color="white"
@@ -64,9 +66,8 @@ export const Modal = ({ TamanhoH, TamanhoW }) => {
               label="Valor da despesa"
               register={formAdicionar.register}
               error={formAdicionar.errors.pantryValue?.message}
-              type="text"
+              type="number"
               name="pantryValue"
-              id="1"
               TamanhoW="45%"
               Bottom="2px solid white"
               Color="white"
@@ -78,21 +79,22 @@ export const Modal = ({ TamanhoH, TamanhoW }) => {
               register={formAdicionar.register}
               error={formAdicionar.errors.expenseCurrency?.message}
               name="expenseCurrency"
-              id="1"
+              type="text"
               TamanhoW="45%"
               Bottom="2px solid white"
               Color="white"
               ColorError="#F80606"
               Select={true}
             >
-              <OptionInput>Dinheiro</OptionInput>
+              {wallet.currencies?.map((moeda) => {
+                return <OptionInput>{moeda}</OptionInput>;
+              })}
             </InputGlobal>
             <InputGlobal
               label="Método de Pagamento"
               register={formAdicionar.register}
               error={formAdicionar.errors.paymentMthod?.message}
               name="paymentMthod"
-              id="2"
               TamanhoW="45%"
               Bottom="2px solid white"
               Color="white"
@@ -109,7 +111,6 @@ export const Modal = ({ TamanhoH, TamanhoW }) => {
               register={formAdicionar.register}
               error={formAdicionar.errors.expenseTag?.message}
               name="expenseTag"
-              id="2"
               TamanhoW="45%"
               Bottom="2px solid white"
               Color="white"
@@ -122,13 +123,14 @@ export const Modal = ({ TamanhoH, TamanhoW }) => {
               <OptionInput>Transporte</OptionInput>
               <OptionInput>Saúde</OptionInput>
             </InputGlobal>
-          </FormInput>
-          <DivButtonInput>
             <ButtonRgb
               TamanhoW="450px"
               text="Adicionar"
               status={activeButton}
             />
+          </FormInput>
+          <DivButtonInput>
+
           </DivButtonInput>
         </DivConteudo>
       </DivModal>

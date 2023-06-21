@@ -40,7 +40,7 @@ export const FormIn = () => {
             pantryValue:'',
             expenseDescription:'',
             expenseCurrency:'',
-            paymentMthod:'',
+            expenseCurrency:'',
             expenseTag:''
         }
     });
