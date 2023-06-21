@@ -15,7 +15,7 @@ import { useContext } from "react";
 import { ValidationContext } from "../../context";
 
 export const HeaderLogin = () => {
-  const { activeModal, deactivateModal, modal, user} =
+  const { activeModal, deactivateModal, modal, loggedUser} =
     useContext(ValidationContext);
 
   return (
@@ -23,8 +23,8 @@ export const HeaderLogin = () => {
       <LogoHeader src={logo} />
       <DivSuperiorDireito>
         <DivDados>
-          <Paragrafo tamanho={"20px"}>{user}</Paragrafo>
-          <Paragrafo tamanho= {"15px"}>BRL: 1400,00</Paragrafo>
+          <Paragrafo tamanho={"20px"}>{loggedUser.email}</Paragrafo>
+          <Paragrafo tamanho= {"15px"}>BRL: 0,00</Paragrafo>
         </DivDados>
 
         {modal === false ? (

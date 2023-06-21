@@ -12,9 +12,9 @@ import { HeaderLogin } from "../Header/index";
 import { ValidationContext } from "../../context";
 import { FormIn } from "../../schemas";
 import { ButtonRgb } from "../Button";
-import { cotacaoApi } from "../../service/cotacaoApi";
 
-export const Modal = ({ TamanhoH, TamanhoW }) => {
+
+export const Modal = ({ TamanhoH, TamanhoW , Text }) => {
   const { deactivateModal, addExpense, wallet } = useContext(ValidationContext);
   const [activeButton, setActiveButton] = useState(false);
   const form = FormIn();
@@ -126,7 +126,7 @@ export const Modal = ({ TamanhoH, TamanhoW }) => {
             </InputGlobal>
             <ButtonRgb
               TamanhoW="450px"
-              text="Adicionar"
+              text={Text}
               status={activeButton}
             />
           </FormInput>

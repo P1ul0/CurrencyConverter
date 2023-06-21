@@ -65,7 +65,7 @@ export const ValidationProvider = ({ children }) => {
 
 
     const newExpense = {
-      id: lengthExpense - 1 + 1,
+      id: lengthExpense ,
       formatValue,
       expenseDescription,
       filterName,
@@ -81,9 +81,20 @@ export const ValidationProvider = ({ children }) => {
   
   
   const removeExpense = (data) => {
-    const newWallet = wallet.expenses.filter((expense) => expense !== data);
-    wallet.expenses = newWallet;
+    const filter = wallet.expenses.filter((item) => item.id !== data.id)
+    setExpenses(filter)
   };
+
+  const editExpense = (data) => {
+    const newExpense = expenses.map((item) => {
+      if (item.id === id) {
+        return expense;
+      }
+      return item;
+    });
+    setExpenses(newExpense);
+    
+  }
 
   const activeModal = () => {
     setModal(true);
@@ -105,6 +116,7 @@ export const ValidationProvider = ({ children }) => {
     wallet,
     addExpense,
     removeExpense,
+    editExpense
   };
 
   return (

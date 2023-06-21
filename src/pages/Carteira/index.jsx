@@ -16,13 +16,13 @@ import { ValidationContext } from "../../context";
 import { Modal } from "../../components/Modal";
 
 export const Carteira = () => {
-  const { modal, removeExpense,wallet } = useContext(ValidationContext);
+  const { modal, removeExpense,editExpense,wallet } = useContext(ValidationContext);
 
   return (
     <>
       <DivCarteira>
         <HeaderLogin />
-        {modal && <Modal />}
+        {modal && <Modal Text={"Adicionar"} />}
         <DivTableCarteira>
           <TableCarteira>
             <TrTableCarteira>
@@ -59,7 +59,8 @@ export const Carteira = () => {
                   <TdTableCarteira>Real</TdTableCarteira>
                   <TdTableCarteira>
                     <DivButtonPerson>
-                      <Button>
+                      <Button onClick={() => editExpense(expense) }>
+                        {modal && <Modal Text={"Editar"}/>}
                         <ImgEdit/>
                       </Button>
                       <Button onClick={()=> removeExpense(expense)}>
