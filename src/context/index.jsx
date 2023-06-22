@@ -148,6 +148,10 @@ export const ValidationProvider = ({ children }) => {
     return filterCode;
   };
 
+  const totalExpenses = expenses.reduce((acc, curr) => { 
+    return acc + Number(curr.finalValue);
+  }, 0);
+
   const values = {
     modal,
     load,
@@ -165,6 +169,7 @@ export const ValidationProvider = ({ children }) => {
     setId,
     id,
     convertedNameToCode,
+    totalExpenses
   };
 
   return (
