@@ -9,6 +9,7 @@ export const ValidationProvider = ({ children }) => {
   const navigate = useNavigate();
   const [load, setLoad] = useState(null);
   const [modal, setModal] = useState(false);
+  const [id, setId] = useState(null);
   const [loggedUser, setLoggedUser] = useState(
     JSON.parse(localStorage.getItem("user")) || {}
   );
@@ -22,6 +23,7 @@ export const ValidationProvider = ({ children }) => {
     expenses,
     currencies,
   };
+
   const hadleLogin = async (user) => {
     localStorage.setItem("user", JSON.stringify(user));
     setLoggedUser(user);
@@ -40,7 +42,7 @@ export const ValidationProvider = ({ children }) => {
       const filterArray = getKeyObject.filter((e) => e.codein !== "BRLT");
       setCurrencies(filterArray);
     });
-  }, [expenses])
+  }, [expenses]);
 
   const addExpense = (expense) => {
     let lengthExpense = expenses.length;
@@ -52,55 +54,98 @@ export const ValidationProvider = ({ children }) => {
       expenseTag,
     } = expense;
 
-
-    const filter = wallet.currencies.filter((item) => item.code == expenseCurrency)
+    const filter = wallet.currencies.filter(
+      (item) => item.code == expenseCurrency
+    );
+    
     const filterName = filter.map((item) => {
-      return item.name
-    })
+      return item.name;
+    });
     const filterExchange = filter.map((item) => {
-      return Number(item.ask).toFixed(2)
-    })
-    const formatValue = Number(pantryValue).toFixed(2)
-    const finalValue = (filterExchange * formatValue).toFixed(2)
-
+      return Number(item.ask).toFixed(2);
+    });
+    const formatValue = Number(pantryValue).toFixed(2);
+    const finalValue = (filterExchange * formatValue).toFixed(2);
 
     const newExpense = {
-      id: lengthExpense ,
+      id: lengthExpense,
       formatValue,
       expenseDescription,
       filterName,
       paymentMthod,
       expenseTag,
       filterExchange,
-      finalValue
+      finalValue,
     };
-  
 
     wallet.expenses.push({ ...newExpense });
   };
-  
-  
+
+
+
   const removeExpense = (data) => {
-    const filter = wallet.expenses.filter((item) => item.id !== data.id)
-    setExpenses(filter)
+    const filter = wallet.expenses.filter((item) => item.id !== data.id);
+    setExpenses(filter);
   };
 
-  const editExpense = (data) => {
+  const editExpense = (data, id) => {
     const newExpense = expenses.map((item) => {
       if (item.id === id) {
+        
+        const {
+          id,
+          pantryValue,
+          expenseDescription,
+          paymentMthod,
+          expenseCurrency,
+          expenseTag,
+        } = data;
+
+        const filter = wallet.currencies.filter(
+          (item) => item.code == expenseCurrency
+        );
+        
+        const filterName = filter.map((item) => {
+          return item.name;
+        });
+        const filterExchange = filter.map((item) => {
+          return Number(item.ask).toFixed(2);
+        });
+        const formatValue = Number(pantryValue).toFixed(2);
+        const finalValue = (filterExchange * formatValue).toFixed(2);
+
+        const expense = {
+          id,
+          formatValue,
+          expenseDescription,
+          filterName,
+          paymentMthod,
+          expenseTag,
+          filterExchange,
+          finalValue,
+        };
+
         return expense;
       }
+      
       return item;
     });
     setExpenses(newExpense);
-    
-  }
+  };
 
   const activeModal = () => {
     setModal(true);
   };
   const deactivateModal = () => {
     setModal(false);
+  };
+
+  const convertedNameToCode = (name) => {
+    const filter = wallet.currencies.filter((item) => item.name == name);
+    const filterCode = filter.map((item) => {
+      return item.code;
+    });
+    return filterCode;
   };
 
   const values = {
@@ -116,7 +161,10 @@ export const ValidationProvider = ({ children }) => {
     wallet,
     addExpense,
     removeExpense,
-    editExpense
+    editExpense,
+    setId,
+    id,
+    convertedNameToCode,
   };
 
   return (

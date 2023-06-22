@@ -8,14 +8,12 @@ import {
 } from "./style";
 
 import { InputGlobal } from "../Input";
-import { HeaderLogin } from "../Header/index";
 import { ValidationContext } from "../../context";
 import { FormIn } from "../../schemas";
 import { ButtonRgb } from "../Button";
 
-
-export const Modal = ({ TamanhoH, TamanhoW , Text }) => {
-  const { deactivateModal, addExpense, wallet } = useContext(ValidationContext);
+export const Modal = ({Text,ChangeText, Expense }) => {
+  const { deactivateModal, addExpense, wallet , editExpense, id,convertedNameToCode } = useContext(ValidationContext);
   const [activeButton, setActiveButton] = useState(false);
   const form = FormIn();
 
@@ -40,15 +38,28 @@ export const Modal = ({ TamanhoH, TamanhoW , Text }) => {
     activeButton,
   ]);
 
+  useEffect(() => {
+    if (Expense) {
+      const code = convertedNameToCode(Expense.filterName);
+      form.setValue("expenseDescription", Expense.expenseDescription);
+      form.setValue("pantryValue", Expense.formatValue);
+      form.setValue("expenseCurrency", code);
+      form.setValue("paymentMthod", Expense.paymentMthod);
+      form.setValue("expenseTag", Expense.expenseTag);
+      form.setValue("filterExchange", Expense.filterExchange);
+      
+    }
+  }, [Expense]);
+
   const onSubmit = (expense) => {
-    addExpense(expense)
-   
-    deactivateModal()
+    
+    { Text == "Adicionar" ? addExpense(expense) : editExpense(expense,id)};
+    deactivateModal();
+    ChangeText('Adicionar')
   };
 
   return (
     <>
-      <HeaderLogin />
       <DivModal>
         <DivConteudo>
           <FormInput onSubmit={form.handleSubmit(onSubmit)}>
@@ -124,15 +135,21 @@ export const Modal = ({ TamanhoH, TamanhoW , Text }) => {
               <OptionInput>Transporte</OptionInput>
               <OptionInput>Saúde</OptionInput>
             </InputGlobal>
-            <ButtonRgb
-              TamanhoW="450px"
-              text={Text}
-              status={activeButton}
-            />
+            {Text === "Editar" ? (
+              <ButtonRgb
+                TamanhoW="450px"
+                text={Text}
+                status={activeButton}
+              />
+            ) : (
+              <ButtonRgb
+                TamanhoW="450px"
+                text={Text}
+                status={activeButton}
+              />
+            )}
           </FormInput>
-          <DivButtonInput>
-
-          </DivButtonInput>
+          <DivButtonInput></DivButtonInput>
         </DivConteudo>
       </DivModal>
     </>

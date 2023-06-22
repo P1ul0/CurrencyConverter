@@ -33,7 +33,7 @@ const FormSchema = yup.object().shape({
 
 })
 export const FormIn = () => {
-    const {register,reset,watch,handleSubmit, formState: { errors,},}  = useForm({
+    const {register,reset,watch,handleSubmit,setValue ,formState: { errors,},}  = useForm({
         resolver: yupResolver(FormSchema),
         mode:'all',
         defaultValues:{
@@ -45,7 +45,7 @@ export const FormIn = () => {
         }
     });
 
-    return {register,watch,handleSubmit,errors};
+    return {register,watch,handleSubmit,setValue,errors};
 
 }
 

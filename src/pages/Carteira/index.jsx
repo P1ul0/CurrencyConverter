@@ -11,18 +11,26 @@ import {
   DivButtonPerson,
 } from "./style";
 import { HeaderLogin } from "../../components/Header/index";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ValidationContext } from "../../context";
 import { Modal } from "../../components/Modal";
 
 export const Carteira = () => {
-  const { modal, removeExpense,editExpense,wallet } = useContext(ValidationContext);
+  const { modal, removeExpense, wallet, activeModal, setId } =
+    useContext(ValidationContext);
+
+  const [text, setText] = useState("Adicionar");
+
+  const handleEdit = (expense) => {
+    setText("Editar");
+    activeModal();
+  };
 
   return (
     <>
       <DivCarteira>
         <HeaderLogin />
-        {modal && <Modal Text={"Adicionar"} />}
+        {modal && <Modal ChangeText={setText} Text={text} />}
         <DivTableCarteira>
           <TableCarteira>
             <TrTableCarteira>
@@ -45,8 +53,10 @@ export const Carteira = () => {
                 paymentMthod,
                 expenseTag,
                 filterExchange,
-                finalValue
+                finalValue,
               } = expense;
+
+              setId(id);
               return (
                 <TrTableCarteira id={id}>
                   <TdTableCarteira>{expenseDescription}</TdTableCarteira>
@@ -59,12 +69,18 @@ export const Carteira = () => {
                   <TdTableCarteira>Real</TdTableCarteira>
                   <TdTableCarteira>
                     <DivButtonPerson>
-                      <Button onClick={() => editExpense(expense) }>
-                        {modal && <Modal Text={"Editar"}/>}
-                        <ImgEdit/>
+                      <Button onClick={() => handleEdit(expense)}>
+                        {modal && (
+                          <Modal
+                            ChangeText={setText}
+                            Text={text}
+                            Expense={expense}
+                          />
+                        )}
+                        <ImgEdit />
                       </Button>
-                      <Button onClick={()=> removeExpense(expense)}>
-                        <ImgDelete/>
+                      <Button onClick={() => removeExpense(expense)}>
+                        <ImgDelete />
                       </Button>
                     </DivButtonPerson>
                   </TdTableCarteira>
