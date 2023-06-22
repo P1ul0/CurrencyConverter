@@ -12,8 +12,15 @@ import { ValidationContext } from "../../context";
 import { FormIn } from "../../schemas";
 import { ButtonRgb } from "../Button";
 
-export const Modal = ({Text,ChangeText, Expense }) => {
-  const { deactivateModal, addExpense, wallet , editExpense, id,convertedNameToCode } = useContext(ValidationContext);
+export const Modal = ({ Text, ChangeText, Expense }) => {
+  const {
+    deactivateModal,
+    addExpense,
+    wallet,
+    editExpense,
+    id,
+    convertedNameToCode,
+  } = useContext(ValidationContext);
   const [activeButton, setActiveButton] = useState(false);
   const form = FormIn();
 
@@ -47,15 +54,29 @@ export const Modal = ({Text,ChangeText, Expense }) => {
       form.setValue("paymentMthod", Expense.paymentMthod);
       form.setValue("expenseTag", Expense.expenseTag);
       form.setValue("filterExchange", Expense.filterExchange);
-      
     }
   }, [Expense]);
 
+  useEffect(() => {
+    if (Text == "Adicionar") {
+      form.setValue("expenseDescription", "");
+      form.setValue("pantryValue", null);
+      form.setValue("expenseCurrency", "");
+      form.setValue("paymentMthod", "");
+      form.setValue("expenseTag", "");
+      form.setValue("filterExchange", "");
+    }
+  }, [Text]);
+
   const onSubmit = (expense) => {
+    if (Text == "Editar") {
+      editExpense(expense, id);
+      ChangeText("Adicionar");
+    } else {
+      addExpense(expense);
+    }
     
-    { Text == "Adicionar" ? addExpense(expense) : editExpense(expense,id)};
     deactivateModal();
-    ChangeText('Adicionar')
   };
 
   return (
@@ -136,17 +157,9 @@ export const Modal = ({Text,ChangeText, Expense }) => {
               <OptionInput>Saúde</OptionInput>
             </InputGlobal>
             {Text === "Editar" ? (
-              <ButtonRgb
-                TamanhoW="450px"
-                text={Text}
-                status={activeButton}
-              />
+              <ButtonRgb TamanhoW="450px" text={Text} status={activeButton} />
             ) : (
-              <ButtonRgb
-                TamanhoW="450px"
-                text={Text}
-                status={activeButton}
-              />
+              <ButtonRgb TamanhoW="450px" text={Text} status={activeButton} />
             )}
           </FormInput>
           <DivButtonInput></DivButtonInput>

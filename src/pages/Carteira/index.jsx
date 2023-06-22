@@ -18,10 +18,14 @@ import { Modal } from "../../components/Modal";
 export const Carteira = () => {
   const { modal, removeExpense, wallet, activeModal, setId } =
     useContext(ValidationContext);
+    
+
 
   const [text, setText] = useState("Adicionar");
+  const [statusExpense, setStatusExpense] = useState(null);
 
   const handleEdit = (expense) => {
+    setStatusExpense(expense);
     setText("Editar");
     activeModal();
   };
@@ -30,7 +34,7 @@ export const Carteira = () => {
     <>
       <DivCarteira>
         <HeaderLogin />
-        {modal && <Modal ChangeText={setText} Text={text} />}
+        {modal && <Modal ChangeText={setText} Text={text} Expense={statusExpense}  />}
         <DivTableCarteira>
           <TableCarteira>
             <TrTableCarteira>
@@ -70,13 +74,7 @@ export const Carteira = () => {
                   <TdTableCarteira>
                     <DivButtonPerson>
                       <Button onClick={() => handleEdit(expense)}>
-                        {modal && (
-                          <Modal
-                            ChangeText={setText}
-                            Text={text}
-                            Expense={expense}
-                          />
-                        )}
+
                         <ImgEdit />
                       </Button>
                       <Button onClick={() => removeExpense(expense)}>
